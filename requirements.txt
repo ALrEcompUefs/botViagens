@@ -1,3 +1,5 @@
 urllib.request
 BeautifulSoup
 json
+pymongo
+python-dotenv
