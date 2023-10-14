@@ -64,3 +64,36 @@ class Database:
         else:
             print('Objeto encontrado:',viagem['titulo'],' com o id: ' , viagem['id'])
         return viagem
+
+    # faz a busca de uma viagem pelo titulo da viagem
+    def dB_find_by_titulo(self, titulo:str):
+        # conecta-se ao banco de dados e recebe a colecão 
+        collection_viagens=self.connect()
+        # especififca a query para buscar parte da string no campo titulo
+        query = {"titulo": {"$regex": titulo, "$options": "i"}}  # O "i" torna a pesquisa case-insensitive
+        # usa o método find para buscar instancias que correspondam a busca
+        lista_viagens= collection_viagens.find(query)
+
+        #verifica se obteve resultados
+        if not lista_viagens:
+            print('Nenhum objeto encontrado com o titulo:',titulo)
+        
+        else:
+            # converte o objeto do tipo cursor em uma lista
+            lista_viagens = list(lista_viagens)
+        return lista_viagens
+    
+    # faz a busca de uma viagem pelo ano da viagem
+    def dB_find_by_ano(self, ano:str):
+         # conecta-se ao banco de dados e recebe a colecão 
+        collection_viagens=self.connect()
+        # usa o método find para buscar instancias que correspondam a busca
+        lista_viagens= collection_viagens.find({'ano':ano})
+
+        #verifica se obteve resultados
+        if not lista_viagens:
+            print('Nenhum objeto encontrado com o ano:',ano)
+        else:
+            # converte o objeto do tipo cursor em uma lista
+            lista_viagens = list(lista_viagens)
+        return lista_viagens
