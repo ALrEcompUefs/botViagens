@@ -9,20 +9,32 @@ if __name__ == "__main__":
     viagens = crawler.formatar_dados(viagens)
 
     # mostra as viagens extraidas
-    #for viagem in viagens['viagens']:
-    #    print(viagem,'\n')
+    for viagem in viagens['viagens']:
+        print(viagem,'\n')
 
     # mostra o total de viagens extraidos
     print('Total de viagens:',len(viagens['viagens']))
 
-    #print('\n\nInserindo no banco de dados')
+    print('\n\nInserindo no banco de dados')
 
     # insere as viagens no banco de dados
-    #db.dB_insert_viagens(viagens['viagens'])
+    db.dB_insert_viagens(viagens['viagens'])
+    
     # faz a busca por um id como exemplo
+    print('\nBusca por id')
     print( db.dB_find_by_id(1))
     print( db.dB_find_by_id(2))
     print( db.dB_find_by_id(58))
 
     # faz busca por titulo
+    print('\nBusca por titulo')
+    lista = db.dB_find_by_titulo('Rio ')
+    for vg in lista:
+        print(vg)
+    
+    # faz a busca por ano
+    print('\nBusca por ano')
+    lista = db.dB_find_by_ano('2023')
+    for vg in lista:
+        print(vg)
     

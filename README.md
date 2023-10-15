@@ -33,4 +33,18 @@ Para acessar o banco de dados é implementada a classe ***Database** *no arquivo
 * dB_find_by_titulo: faz a busca de uma viagem pelo o titulo e a retorna caso encontre ou informa que não existe
 * dB_find_by_ano: faz a busca de uma viagem pelo o ano e a retorna caso encontre ou informa que não existe
 
-A coleção ***viagens***  é estrutruada do seguinte modo:
+A coleção ***viagens***  é estruturada do seguinte modo:
+
+```
+{
+viagens[
+	{
+		'id'
+		'titulo'
+		'pontifice'
+		'ano'
+		'destino'
+		'url'
+	}
+}
+```
