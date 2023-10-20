@@ -37,6 +37,7 @@ class Bot:
             post ="{}\n\n Link:{}".format(data['titulo'],data['url'])
             self.client.create_tweet(text=post)
             return True
+        # Lança exceção caso não seja possivel postar o tweet
         except Exception as e:
             print(str(e))
             return False

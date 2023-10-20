@@ -3,3 +3,6 @@ BeautifulSoup
 json
 pymongo
 python-dotenv
+schedule
+tweepy
+time
