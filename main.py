@@ -1,9 +1,12 @@
 from crawler import Crawler
 from database import Database
+from bot import Bot
+
 if __name__ == "__main__":
     crawler = Crawler()
     db = Database()
-
+    bot = Bot()
+    
     links = crawler.extrair_links_viagens('https://www.vatican.va/content/francesco/pt.html')
     viagens = crawler.extrair_dados_viagens(links)
     viagens = crawler.formatar_dados(viagens)
@@ -18,8 +21,14 @@ if __name__ == "__main__":
     print('\n\nInserindo no banco de dados')
 
     # insere as viagens no banco de dados
-    db.dB_insert_viagens(viagens['viagens'])
+    novas_viagens = db.dB_insert_viagens(viagens['viagens'])
     
+    if len(novas_viagens) !=0:
+        for viagem in novas_viagens:
+            print('inserido')
+            bot.post(viagem)
+
+    '''    
     # faz a busca por um id como exemplo
     print('\nBusca por id')
     print( db.dB_find_by_id(1))
@@ -37,4 +46,4 @@ if __name__ == "__main__":
     lista = db.dB_find_by_ano('2023')
     for vg in lista:
         print(vg)
-    
+    '''

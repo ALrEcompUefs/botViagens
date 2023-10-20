@@ -34,6 +34,7 @@ class Database:
     # Insere viagens na coleção de viagens
     # data é um dicionario com as viagens
     def dB_insert_viagens(self, data: list):
+        novas_viagens = list()
         # conecta-se ao banco de dados e obtém a colecção de viagens
         collection_viagens = self.connect()
         # percorre o dicionario viagem por viagem
@@ -46,11 +47,14 @@ class Database:
                 # insere nova instancia no banco de dados
                 collection_viagens.insert_one({'id':viagem['id'],'titulo':viagem["titulo"],'pontifice': viagem['pontifice'],'ano':viagem['ano'],'destino':viagem['destino'],'url':viagem['url']})
                 print('viagem inserida: ', viagem['titulo'],' com o id: ' , viagem['id'])
+                novas_viagens.append(viagem)
             else:
                 # caso já exista no banco de dados então não ocorre a inserção
                 print('viagem já existe no banco: ',viagem['titulo'],' com o id: ',viagem['id'])
+                
         # após percorrer todos os novos dados fecha a conexão
         self.close()
+        return novas_viagens
 
     # faz a busca de uma viagem pelo id da viagem
     def dB_find_by_id(self, id:int):
