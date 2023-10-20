@@ -9,13 +9,6 @@ if __name__ == "__main__":
     db = Database()
     bot = Bot()
     
-    links = crawler.extrair_links_viagens('https://www.vatican.va/content/francesco/pt.html')
-    viagens = crawler.extrair_dados_viagens(links)
-    viagens = crawler.formatar_dados(viagens)
-
-   
-    
-    
     def job():
 
         print('|----- BUSCA POR NOVAS VIAGENS ----- |')
@@ -34,9 +27,9 @@ if __name__ == "__main__":
             for viagem in novas_viagens:
                 print('inserido')
                 bot.post(viagem)
-                time.sleep(0.5)
+                time.sleep(1)
         
-    schedule.every(30).minutes.do(job)
+    schedule.every(1).minutes.do(job)
 
     while True:
         schedule.run_pending()
