@@ -10,9 +10,17 @@ Répositorio para o projeto do web crwaler e bot no twiter
 * Json
 * pymongo
 * python-dotenv
+* schedule
+* tweepy
+* time
 
 ## Como executar
 
+* Execute o seguinte comando para instalar as dependências
+
+  ```
+  pip install -r requirements.txt
+  ```
 * Para rodar o projeto execute o arquivo main
 * O programa vai executar o web crawler e exibir no terminal a saida com os dados extraidos.
 * Após executar o crawler o programa faz inserção no banco de dados e exibe no terminal os resultados
